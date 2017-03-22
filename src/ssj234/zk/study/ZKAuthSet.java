@@ -1,14 +1,13 @@
 package ssj234.zk.study;
 
-import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
-import org.apache.zookeeper.ZooKeeper;
 import org.apache.zookeeper.Watcher.Event.KeeperState;
 import org.apache.zookeeper.ZooDefs.Ids;
+import org.apache.zookeeper.ZooKeeper;
 
 public class ZKAuthSet implements Watcher{
 	public static String PATH="/zk-book-auth_test";

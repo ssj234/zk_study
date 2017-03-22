@@ -1,7 +1,5 @@
 package ssj234.zk.study;
 
-import java.io.IOException;
-import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
 import org.apache.zookeeper.CreateMode;
@@ -9,8 +7,8 @@ import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.Watcher.Event.EventType;
 import org.apache.zookeeper.Watcher.Event.KeeperState;
-import org.apache.zookeeper.ZooKeeper;
 import org.apache.zookeeper.ZooDefs.Ids;
+import org.apache.zookeeper.ZooKeeper;
 import org.apache.zookeeper.data.Stat;
 
 /**
@@ -48,6 +46,7 @@ public class ZKGetDataSync implements Watcher {
 				try{
 					System.out.println(new String(zk.getData(event.getPath(), true, stat)));
 					System.out.println(stat.getCzxid()+","+stat.getMzxid()+","+stat.getVersion());
+					Thread.sleep(20000);
 				}catch(Exception e){}
 			}else if(EventType.None==event.getType()&&null==event.getPath()){//类型为空且Path为null
 				countdown.countDown();

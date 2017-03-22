@@ -1,19 +1,17 @@
 package ssj234.zk.study;
 
-import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 
-import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
-import org.apache.zookeeper.ZooKeeper;
 import org.apache.zookeeper.Watcher.Event.KeeperState;
-import org.apache.zookeeper.ZooDefs.Ids;
+import org.apache.zookeeper.ZooKeeper;
 
 /**
  * 删除delete操作作用于子节点
+ * 
  * @author shishengjie
- *
+ * 
  */
 public class ZKAuthGet implements Watcher {
 	public static String PATH = "/zk-book-auth_test1";
@@ -25,7 +23,7 @@ public class ZKAuthGet implements Watcher {
 
 		ZooKeeper zk2 = new ZooKeeper("localhost:2181", 5000, new ZKAuthGet());
 		countdown.await();
-		//会抛出异常， NoAuth for /zk-book-auth_test1
+		// 会抛出异常， NoAuth for /zk-book-auth_test1
 		zk2.getData(PATH, false, null);
 
 	}
